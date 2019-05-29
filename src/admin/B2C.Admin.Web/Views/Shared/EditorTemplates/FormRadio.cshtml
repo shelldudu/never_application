@@ -1,0 +1,86 @@
+﻿@model bool
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "form-control";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "margin-right:10px;";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+}
+
+@{
+    if (disabled == null)
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <div class="input-group">
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" value="true" @string.Format("{0}", Model ? "checked='checked'" : "")>是
+                    </label>
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" value="false" @string.Format("{0}", Model ? "" : "checked='checked'")>否
+                    </label>
+                </div>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <div class="input-group">
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" value="true" @string.Format("{0}", Model ? "checked='checked'" : "")>是
+                    </label>
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" value="false" @string.Format("{0}", Model ? "" : "checked='checked'")>否
+                    </label>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <div class="input-group">
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" disabled value="true" @string.Format("{0}", Model ? "checked='checked'" : "")>是
+                    </label>
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" disabled value="false" @string.Format("{0}", Model ? "" : "checked='checked'")>否
+                    </label>
+                </div>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <div class="input-group">
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" disabled value="true" @string.Format("{0}", Model ? "checked='checked'" : "")>是
+                    </label>
+                    <label style="@style">
+                        <input type="radio" name="@name" class="flat-red" disabled value="false" @string.Format("{0}", Model ? "" : "checked='checked'")>否
+                    </label>
+                </div>
+            </div>
+        }
+    }
+
+}

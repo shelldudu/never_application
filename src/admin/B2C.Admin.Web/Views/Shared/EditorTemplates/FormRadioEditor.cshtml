@@ -1,0 +1,64 @@
+﻿@model bool
+@using System
+@using System.Collections
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "form-control";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+}
+
+@{
+    if (disabled == null)
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <input type="hidden" id="@name" name="@name" placeholder="@placeholder" value="@Model" style="@style">
+                <input type="text" class="@className" placeholder="@placeholder" value="@(Model?"是":"否")" style="@style">
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <input type="hidden" id="@name" name="@name" placeholder="@placeholder" value="@Model" style="@style">
+                <input type="text" class="@className" placeholder="@placeholder" value="@(Model?"是":"否")" style="@style">
+            </div>
+        }
+    }
+    else
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <input type="hidden" id="@name" name="@name" placeholder="@placeholder" value="@Model" style="@style">
+                <input type="text" class="@className" placeholder="@placeholder" value="@(Model?"是":"否")" style="@style" disabled>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <input type="hidden" id="@name" name="@name" placeholder="@placeholder" value="@Model" style="@style">
+                <input type="text" class="@className" placeholder="@placeholder" value="@(Model?"是":"否")" style="@style" disabled>
+            </div>
+        }
+    }
+
+}

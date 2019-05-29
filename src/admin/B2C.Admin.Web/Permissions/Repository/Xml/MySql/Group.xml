@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="mysql" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <insert id="insertGroupRoot">
+    insert into `group`
+    (AggregateId,
+    DepartmentId,
+    Name,
+    Descn,
+    CreateDate,
+    Creator,
+    EditDate,
+    Editor,
+    Version)
+    values
+    (@AggregateId,
+    @DepartmentId,
+    @Name,
+    @Descn,
+    @CreateDate,
+    @Creator,
+    @EditDate,
+    @Editor,
+    @Version);
+    <return type="int">
+      select last_insert_id() as Id;
+    </return>
+  </insert>
+
+  <select id="qryGroupRoot">
+    select a.* from `group` as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="Name" then="and">
+        a.Name = @Name
+      </ifnotnull>
+      <ifnotnull parameter="DepartmentId" then="and">
+        a.DepartmentId = @DepartmentId
+      </ifnotnull>
+    </if>
+  </select>
+
+  <select id="qry_GroupRoot">
+    select a.* from `group` as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="Name" then="and">
+        a.Name = @Name
+      </ifnotnull>
+      <ifnotnull parameter="DepartmentId" then="and">
+        a.DepartmentId = @DepartmentId
+      </ifnotnull>
+    </if>
+    order by id desc
+    limit @StartIndex,@PageSize
+  </select>
+  
+  <select id="qryGroupRootCount">
+    select count(a.Id) from `group` as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="Name" then="and">
+        a.Name = @Name
+      </ifnotnull>
+      <ifnotnull parameter="DepartmentId" then="and">
+        a.DepartmentId = @DepartmentId
+      </ifnotnull>
+    </if>
+  </select>
+
+  <update id="updateGroupRoot">
+    update `group`
+    set Version = Version + 1,
+    Name = @Name,
+    Descn = @Descn,
+    EditDate = @EditDate,
+    Editor = @Editor
+    where AggregateId = @AggregateId
+    and Version = @Version;
+  </update>
+
+  <delete id="deleteGroupRoot">
+    delete from `group`
+    where AggregateId = @AggregateId
+    and Version = @Version;
+  </delete>
+
+  <delete id="batchDeleteGroupRoot">
+    <ifarray open="" close="" parameter="" split="" then="">
+      delete from `group`
+      where AggregateId = @AggregateId
+      and Version = @Version;
+    </ifarray>
+  </delete>
+</namespace>

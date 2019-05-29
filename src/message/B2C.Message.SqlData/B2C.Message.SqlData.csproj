@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net471;netstandard2.0;</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Query\Xml\MySql\EmailCodeQuery.xml" />
+    <None Remove="Query\Xml\MySql\MobileCodeQuery.xml" />
+    <None Remove="Query\Xml\SqlServer\EmailCodeQuery.xml" />
+    <None Remove="Query\Xml\SqlServer\MobileCodeQuery.xml" />
+    <None Remove="Repository\Xml\MySql\EmailCodeRepository.xml" />
+    <None Remove="Repository\Xml\MySql\MobileCodeRepository.xml" />
+    <None Remove="Repository\Xml\SqlServer\EmailCodeRepository.xml" />
+    <None Remove="Repository\Xml\SqlServer\MobileCodeRepository.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Query\Xml\MySql\EmailCodeQuery.xml" />
+    <EmbeddedResource Include="Query\Xml\MySql\MobileCodeQuery.xml" />
+    <EmbeddedResource Include="Query\Xml\SqlServer\EmailCodeQuery.xml" />
+    <EmbeddedResource Include="Query\Xml\SqlServer\MobileCodeQuery.xml" />
+    <EmbeddedResource Include="Repository\Xml\MySql\EmailCodeRepository.xml" />
+    <EmbeddedResource Include="Repository\Xml\MySql\MobileCodeRepository.xml" />
+    <EmbeddedResource Include="Repository\Xml\SqlServer\EmailCodeRepository.xml" />
+    <EmbeddedResource Include="Repository\Xml\SqlServer\MobileCodeRepository.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Never" Version="1.0.0" />
+    <PackageReference Include="Never.EasySql" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\B2C.Message.Contract\B2C.Message.Contract.csproj" />
+    <ProjectReference Include="..\B2C.Message.Core\B2C.Message.Core.csproj" />
+    <ProjectReference Include="..\B2C.Message\B2C.Message.csproj" />
+  </ItemGroup>
+
+</Project>

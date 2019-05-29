@@ -1,0 +1,80 @@
+﻿@model Nullable<DateTime>
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "form-control pull-right";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+}
+
+@{
+    if (disabled == null)
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" bind="date" format="yyyy-MM-dd" class="@className" value="@(Model.HasValue ? Model.Value.ToString("yyyy-MM-dd") : null)" placeholder="@placeholder" id="@name" name="@name" style="@style">
+                </div>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" bind="date" format="yyyy-MM-dd" class="@className" value="@(Model.HasValue ? Model.Value.ToString("yyyy-MM-dd") : null)" placeholder="@placeholder" id="@name" name="@name" style="@style">
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="hidden" value="@(Model.HasValue ? Model.Value.ToString("yyyy-MM-dd") : null)" id="@name" name="@name">
+                    <input type="text" bind="date" format="yyyy-MM-dd" class="@className" value="@(Model.HasValue ? Model.Value.ToString("yyyy-MM-dd") : null)" placeholder="@placeholder" style="@style" disabled>
+                </div>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="hidden" value="@(Model.HasValue ? Model.Value.ToString("yyyy-MM-dd") : null)" id="@name" name="@name">
+                    <input type="text" bind="date" format="yyyy-MM-dd" class="@className" value="@(Model.HasValue ? Model.Value.ToString("yyyy-MM-dd") : null)" placeholder="@placeholder" style="@style" disabled>
+                </div>
+            </div>
+        }
+    }
+
+}

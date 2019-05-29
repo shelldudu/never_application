@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="sqlite" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <insert id="insertDepartmentRoot">
+    insert into department
+    (AggregateId,
+    Name,
+    Descn,
+    CreateDate,
+    Creator,
+    EditDate,
+    Editor,
+    Version)
+    values
+    (@AggregateId,
+    @Name,
+    @Descn,
+    @CreateDate,
+    @Creator,
+    @EditDate,
+    @Editor,
+    @Version);
+    <return type="int">
+      select last_insert_rowid() as Id;
+    </return>
+  </insert>
+
+  <select id="qryDepartmentRoot">
+    select a.* from department as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="Name" then="and">
+        a.Name = @Name
+      </ifnotnull>
+    </if>
+  </select>
+
+  <select id="qry_DepartmentRoot">
+    select a.* from department as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="Name" then="and">
+        a.Name = @Name
+      </ifnotnull>
+    </if>
+    order by id desc
+    limit @StartIndex,@PageSize
+  </select>
+
+  <select id="qryDepartmentRootCount">
+    select count(a.Id) from department as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="Name" then="and">
+        a.Name = @Name
+      </ifnotnull>
+    </if>
+  </select>
+
+  <update id="updateDepartmentRoot">
+    update department
+    set Version = Version + 1,
+    Name = @Name,
+    Descn = @Descn,
+    EditDate = @EditDate,
+    Editor = @Editor
+    where AggregateId = @AggregateId
+    and Version = @Version;
+  </update>
+
+  <delete id="deleteDepartmentRoot">
+    delete from department
+    where AggregateId = @AggregateId
+    and Version = @Version;
+  </delete>
+</namespace>

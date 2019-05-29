@@ -1,0 +1,131 @@
+﻿@model GroupModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pageSize = Program.PageSize;
+    var resources = ViewBag.Resources as IEnumerable<OwnerResourceModel>;
+    var exists = new System.Text.StringBuilder(200);
+}
+@section style{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/lib/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+@section content_header {
+    <section class="content-header">
+        <h1>
+            小组权限分配
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="DepartmentList">部门列表</a></li>
+            <li><a href="GroupList" class="active">小组列表</a></li>
+            <li><a href="EmployeeList">员工列表</a></li>
+        </ol>
+    </section>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box" data-vivaldi-spatnav-clickable="1">
+            <div class="box-header">
+                <h3 class="box-title">@(Model.Name)  <small>@(Model.Descn)</small></h3>
+            </div>
+            <div class="box-body table-responsive">
+                <table class="table table-bordered table-hover dataTable" id="dataTableTemplateView">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px"><input type="checkbox"  onclick="alert('因为表格会有过滤功能，因此权限分配需要的需要点击选中状态')"></th>
+                            <th>Id</th>
+                            <th>描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            if (resources != null)
+                            {
+                                foreach (var i in resources)
+                                {
+                                    if (i.OwnerId != null)
+                                    {
+                                        exists.Append(i.AggregateId);
+                                        exists.Append(",");
+                                    }
+                                    <tr>
+                                        <td><input type='checkbox' value='@i.AggregateId' bind='checkbox_line' @(i.OwnerId != null ? "checked" : "")></td>
+                                        <td>@i.Id</td>
+                                        <td>@i.ActionDescn</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer">
+                <button type="button" id="btnsave" class="btn bg-maroon margin">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section script {
+    <!-- DataTables -->
+    <script src="~/lib/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dataTableTemplateView").DataTable({
+                fnInfoCallback: function (settings, start, end, max, total, pre) {
+                    return "显示 " + start + " 至 " + end + "条，一共 " + total + " 条数据";
+                },
+                "language": {
+                    "url": "@this.Content("~/lib/datatables.net/js/zh-cn.lang.json")"
+                }
+            });
+            $("#dataTableTemplateView").data("prmres", '@exists.ToString()');
+            $("#dataTableTemplateView > tbody > tr > td > input[type='checkbox']").each(function () {
+                $(this).change(function () {
+                    var checked = $(this).prop("checked");
+                    var value = $(this).prop("value") + ",";
+                    var original = $("#dataTableTemplateView").data("prmres");
+                    original = original.replace(value, "");
+                    if (checked) {
+                        $("#dataTableTemplateView").data("prmres", original + value);
+                    }
+                    else {
+                        $("#dataTableTemplateView").data("prmres", original);
+                    }
+                });
+            });
+            $("#btnsave").click(function () {
+                var descn = $("#dataTableTemplateView").data("prmres");
+                if (descn == "") {
+                    window.common.dialog.confirm("你正在删除该小组所有权限", function () {
+                        $.ajax({
+                            url: '@Url.Action()',
+                            data: { aggregateId: '@Model.AggregateId', descn: descn },
+                            type: "post",
+                            success: function (result) {
+                                window.common.dialog.operation(result);
+                            },
+                            error: function (result) {
+                                window.common.dialog.operation(result);
+                            }
+                        });
+                    });
+                }
+                else {
+                    $.ajax({
+                    url: '@Url.Action()',
+                        data: { aggregateId: '@Model.AggregateId', descn: descn },
+                    type: "post",
+                    success: function (result) {
+                        window.common.dialog.operation(result);
+                    },
+                    error: function (result) {
+                        window.common.dialog.operation(result);
+                    }});
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,23 @@
+﻿@model dynamic
+@using System
+@using System.Collections
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "form-control pull-right";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "";
+    var colxs = ViewData.ContainsKey("colxs") ? ViewData["colxs"] : "col-lg-2";
+    var colxsStyle = ViewData.ContainsKey("colxsstyle") ? ViewData["colxsstyle"] : "";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+
+}
+
+<div class="@colxs" style="@colxsStyle">
+    <input type="text" class="@className" id="@name" name="@name" placeholder="@placeholder" style="@style" value="@Model" @disabled>
+</div>

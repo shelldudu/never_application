@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net471;netstandard2.0;</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Never" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\B2C.Message.Contract\B2C.Message.Contract.csproj" />
+    <ProjectReference Include="..\B2C.Message\B2C.Message.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,122 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Permissions\Repository\Xml\Sqlite\Department.xml" />
+    <None Remove="Permissions\Repository\Xml\Sqlite\DepartmentResource.xml" />
+    <None Remove="Permissions\Repository\Xml\Sqlite\Employee.xml" />
+    <None Remove="Permissions\Repository\Xml\Sqlite\EmployeeGroup.xml" />
+    <None Remove="Permissions\Repository\Xml\Sqlite\Group.xml" />
+    <None Remove="Permissions\Repository\Xml\Sqlite\GroupResource.xml" />
+    <None Remove="Permissions\Repository\Xml\Sqlite\Resource.xml" />
+    <None Remove="Permissions\Repository\Xml\MySql\Department.xml" />
+    <None Remove="Permissions\Repository\Xml\MySql\DepartmentResource.xml" />
+    <None Remove="Permissions\Repository\Xml\MySql\Employee.xml" />
+    <None Remove="Permissions\Repository\Xml\MySql\EmployeeGroup.xml" />
+    <None Remove="Permissions\Repository\Xml\MySql\Group.xml" />
+    <None Remove="Permissions\Repository\Xml\MySql\GroupResource.xml" />
+    <None Remove="Permissions\Repository\Xml\MySql\Resource.xml" />
+    <None Remove="Permissions\Repository\Xml\SqlServer\Department.xml" />
+    <None Remove="Permissions\Repository\Xml\SqlServer\DepartmentResource.xml" />
+    <None Remove="Permissions\Repository\Xml\SqlServer\Employee.xml" />
+    <None Remove="Permissions\Repository\Xml\SqlServer\EmployeeGroup.xml" />
+    <None Remove="Permissions\Repository\Xml\SqlServer\Group.xml" />
+    <None Remove="Permissions\Repository\Xml\SqlServer\GroupResource.xml" />
+    <None Remove="Permissions\Repository\Xml\SqlServer\Resource.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Permissions\Repository\Xml\Sqlite\Department.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\Sqlite\DepartmentResource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\Sqlite\Employee.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\Sqlite\EmployeeGroup.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\Sqlite\Group.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\Sqlite\GroupResource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\Sqlite\Resource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\MySql\Department.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\MySql\DepartmentResource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\MySql\Employee.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\MySql\EmployeeGroup.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\MySql\Group.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\MySql\GroupResource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\MySql\Resource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\SqlServer\Department.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\SqlServer\DepartmentResource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\SqlServer\Employee.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\SqlServer\EmployeeGroup.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\SqlServer\Group.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\SqlServer\GroupResource.xml" />
+    <EmbeddedResource Include="Permissions\Repository\Xml\SqlServer\Resource.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="MimeMapping" Version="1.0.1.12" />
+    <PackageReference Include="MySql.Data" Version="8.0.16" />
+    <PackageReference Include="Never" Version="1.0.0" />
+    <PackageReference Include="Never.Configuration" Version="1.0.0" />
+    <PackageReference Include="Never.EasySql" Version="1.0.0" />
+    <PackageReference Include="Never.JsonNet" Version="1.0.0" />
+    <PackageReference Include="Never.NLog" Version="1.0.0" />
+    <PackageReference Include="Never.ProtoBuf" Version="1.0.0" />
+    <PackageReference Include="Never.SqliteRecovery" Version="1.0.0" />
+    <PackageReference Include="Never.Web" Version="1.0.0" />
+    <PackageReference Include="Never.Web.Mvc" Version="1.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="2.2.0" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="1.1.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\B2C.Calc\B2C.Calc.csproj" />
+    <ProjectReference Include="..\..\message\B2C.Message.Contract.Service\B2C.Message.Contract.Service.csproj" />
+    <ProjectReference Include="..\..\message\B2C.Message.Contract\B2C.Message.Contract.csproj" />
+    <ProjectReference Include="..\..\message\B2C.Message.Core\B2C.Message.Core.csproj" />
+    <ProjectReference Include="..\..\message\B2C.Message.SqlData\B2C.Message.SqlData.csproj" />
+    <ProjectReference Include="..\..\message\B2C.Message\B2C.Message.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.app.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="App_Config\nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\sitemap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="A10.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\b2c_admin_sqlite.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\command_demo.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\event_demo.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="install.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="uninstall.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

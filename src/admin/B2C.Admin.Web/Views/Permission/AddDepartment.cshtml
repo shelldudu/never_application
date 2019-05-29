@@ -1,0 +1,47 @@
+﻿@model DepartmentModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section style{
+
+}
+@section content_header {
+    <section class="content-header">
+        <h1>
+            新加部门
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="DepartmentList">部门列表</a></li>
+            <li><a href="GroupList">小组列表</a></li>
+            <li><a href="EmployeeList">员工列表</a></li>
+        </ol>
+    </section>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box" data-vivaldi-spatnav-clickable="1">
+            <div class="box-header">
+                <h3 class="box-title">部门基本信息</h3>
+            </div>
+            <div class="box-body">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    <div class="row">
+                        @Html.EditorFor(m => m.Name, "FormEditor", new { displayName = "名字", placeholder = "请输入名字" })
+                        @Html.EditorFor(m => m.Descn, "FormEditor", new { displayName = "描述", placeholder = "请输入描述" })
+                    </div>
+                    <div class="box-footer">
+                        @Html.HiddenFor(m => m.AggregateId)
+                        <button type="submit" class="btn bg-maroon margin">提交</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section script {
+
+} 

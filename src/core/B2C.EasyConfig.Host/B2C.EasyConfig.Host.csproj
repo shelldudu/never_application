@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="App_Config\nlog.config" />
+    <None Remove="App_Data\admin_host.json" />
+    <None Remove="App_Data\admin_task.json" />
+    <None Remove="App_Data\admin_web.json" />
+    <None Remove="App_Data\app_api.json" />
+    <None Remove="App_Data\app_host.json" />
+    <None Remove="App_Data\aum_api.json" />
+    <None Remove="App_Data\aum_task.json" />
+    <None Remove="App_Data\capital_api.json" />
+    <None Remove="App_Data\content_api.json" />
+    <None Remove="App_Data\file_api.json" />
+    <None Remove="App_Data\fuiou_api.json" />
+    <None Remove="App_Data\fuiou_task.json" />
+    <None Remove="App_Data\login_api.json" />
+    <None Remove="App_Data\member_api.json" />
+    <None Remove="App_Data\message_api.json" />
+    <None Remove="App_Data\risk_api.json" />
+    <None Remove="App_Data\risk_rule_osr_task.json" />
+    <None Remove="App_Data\risk_rule_task.json" />
+    <None Remove="App_Data\share.config" />
+    <None Remove="App_Data\wk_wap.json" />
+    <None Remove="App_Data\wk_www.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />
+    <PackageReference Include="Never.NLog" Version="1.0.0" />
+    <PackageReference Include="Never" Version="1.0.0" />
+    <PackageReference Include="Never.Hosting" Version="1.0.0" />
+    <PackageReference Include="Never.Configuration" Version="1.0.0" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Config\nlog.config">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\app\admin_web.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="App_Data\app\admin_task.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="App_Data\app\app_host.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="App_Data\app\message_api.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="App_Data\share\share.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="App_Data\app\app_api.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App_Data\share\share.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\文件说明.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="install.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="uninstall.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

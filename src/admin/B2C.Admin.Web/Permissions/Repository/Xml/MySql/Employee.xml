@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="mysql" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <insert id="insertEmployeeRoot">
+    insert into employee
+    (AggregateId,
+    UserName,
+    Password,
+    NickName,
+    DepartmentId,
+    GroupSort,
+    CreateDate,
+    Creator,
+    EditDate,
+    Editor,
+    Version)
+    values
+    (@AggregateId,
+    @UserName,
+    @Password,
+    @NickName,
+    @DepartmentId,
+    @GroupSort,
+    @CreateDate,
+    @Creator,
+    @EditDate,
+    @Editor,
+    @Version);
+    <return type="int">
+      select last_insert_id() as Id;
+    </return>
+  </insert>
+
+  <select id="qryEmployeeRoot">
+    select a.* from employee as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="UserName" then="and">
+        a.UserName = @UserName
+      </ifnotnull>
+      <ifnotnull parameter="DepartmentId" then="and">
+        a.DepartmentId = @DepartmentId
+      </ifnotnull>
+    </if>
+  </select>
+  
+  <select id="qry_EmployeeRoot">
+    select a.* from employee as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="UserName" then="and">
+        a.UserName = @UserName
+      </ifnotnull>
+      <ifnotnull parameter="DepartmentId" then="and">
+        a.DepartmentId = @DepartmentId
+      </ifnotnull>
+    </if>
+    order by id desc
+    limit @StartIndex,@PageSize
+  </select>
+  
+  <select id="qryEmployeeRootCount">
+    select count(a.Id) from employee as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="UserName" then="and">
+        a.UserName = @UserName
+      </ifnotnull>
+      <ifnotnull parameter="DepartmentId" then="and">
+        a.DepartmentId = @DepartmentId
+      </ifnotnull>
+    </if>
+  </select>
+  
+  <select id="qryEmployeeRootUsingGroup">
+    select a.* from employee as a inner join employee_group as dr on a.AggregateId = dr.EmployeeId
+    where dr.GroupId = @GroupId;
+  </select>
+  
+  <update id="updateEmployeeRoot">
+    update employee
+    set Version = Version + 1,
+    Password = @Password,
+    NickName = @NickName,
+    DepartmentId = @DepartmentId,
+    GroupSort = @GroupSort,
+    EditDate = @EditDate,
+    Editor = @Editor
+    where AggregateId = @AggregateId
+    and Version = @Version;
+  </update>
+
+  <delete id="deleteEmployeeRoot">
+    delete from employee
+    where AggregateId = @AggregateId
+    and Version = @Version;
+  </delete>
+</namespace>

@@ -1,0 +1,25 @@
+{
+    "decimal":        "",
+    "emptyTable":     "表格没有可用数据",
+    "info":           "Showing _START_ to _END_ of _TOTAL_ entries",
+    "infoEmpty":      "Showing 0 to 0 of 0 entries",
+    "infoFiltered":   "(filtered from _MAX_ total entries)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "_MENU_ 条数据",
+    "loadingRecords": "加载中...",
+    "processing":     "处理中...",
+    "search":         "搜索中:",
+    "sSearchPlaceholder":"关键字任意搜索",
+    "zeroRecords":    "表格搜索不到数据",
+    "paginate": {
+        "first":      "第一页",
+        "last":       "最后页",
+        "next":       "下一页",
+        "previous":   "上一页"
+    },
+    "aria": {
+        "sortAscending":  ": 激活对列进行降序排序",
+        "sortDescending": ": 激活对列进行升序排序"
+    }
+}

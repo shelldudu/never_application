@@ -1,0 +1,214 @@
+﻿@model bool
+@using System.Linq;
+@using System;
+@using System.Text;
+@using B2C.Admin.Web.Permissions;
+@using Never.Security;
+@using B2C.Admin.Web.Permissions.Models;
+
+@{
+    if (Model)
+    {
+        string actionResultName = this.ControllerName;
+        string controllerName = this.ActionResultName;
+        string areaName = this.AreaName;
+        if (this.ViewContext.RouteData.Values.ContainsKey("B2CMenu") && this.Context.User is UserPrincipal)
+        {
+            var menu = this.ViewContext.RouteData.Values["B2CMenu"] as B2C.Admin.Web.Menu;
+            var resources = ((AppUser)((UserPrincipal)this.Context.User).CurrentUser).Resources;
+            @this.Html.Raw("<ul class='sidebar-menu' data-widget='tree'>");
+            @this.Html.Raw("<li class='header'>用户菜单</li>");
+            var sb = new StringBuilder(300);
+            if (menu.Childrens != null && menu.Childrens.Any(t => t.Visible))
+            {
+                foreach (var m in menu.Childrens)
+                {
+                    this.RenderMenu(m, resources, sb);
+                }
+            }
+            @this.Html.Raw(sb.ToString());
+            @this.Html.Raw("</ul>");
+        }
+        else
+        {
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">用户菜单</li>
+            </ul>
+        }
+    }
+}
+
+@functions
+{
+    /// <summary>
+    /// 当前Controller名称
+    /// </summary>
+    public string ControllerName
+    {
+        get
+        {
+            if (ViewContext.ActionDescriptor.RouteValues == null)
+                return string.Empty;
+
+            if (!ViewContext.ActionDescriptor.RouteValues.ContainsKey("controller"))
+                return string.Empty;
+
+            return ViewContext.ActionDescriptor.RouteValues["controller"] + "Controller";
+        }
+    }
+
+    /// <summary>
+    /// 当前Controller名称
+    /// </summary>
+    public string ActionResultName
+    {
+        get
+        {
+            if (ViewContext.ActionDescriptor.RouteValues == null)
+                return string.Empty;
+
+            if (!ViewContext.ActionDescriptor.RouteValues.ContainsKey("action"))
+                return string.Empty;
+
+            return ViewContext.ActionDescriptor.RouteValues["action"];
+        }
+    }
+
+    /// <summary>
+    /// 当前区域名称
+    /// </summary>
+    public string AreaName
+    {
+        get
+        {
+            if (ViewContext.ActionDescriptor.RouteValues == null)
+                return string.Empty;
+
+            if (!ViewContext.ActionDescriptor.RouteValues.ContainsKey("area"))
+                return string.Empty;
+
+            return ViewContext.ActionDescriptor.RouteValues["area"];
+        }
+    }
+
+    void RenderMenu(Menu menu, IEnumerable<ActionDesciptor> actions, StringBuilder sb)
+    {
+        if (actions == null || actions.Count() == 0)
+            return;
+
+        if (!menu.Visible)
+            return;
+
+        if (menu.Childrens.Any(o => o.Visible && actions.Any(ta => ta.Controller.Equals(o.Controller, StringComparison.CurrentCultureIgnoreCase) && ta.ActionResult.Equals(o.ActionResult, StringComparison.CurrentCultureIgnoreCase) && ta.Area.Equals(o.Area, StringComparison.CurrentCultureIgnoreCase))))
+        {
+            if (this.ContainArea(menu, this.AreaName, StringComparison.OrdinalIgnoreCase) && this.ContainController(menu, this.ControllerName, StringComparison.OrdinalIgnoreCase))
+            {
+                sb.Append("<li class='active treeview'>");
+            }
+            else
+            {
+                sb.Append("<li class='treeview'>");
+            }
+            sb.Append("<a href='");
+            sb.AppendFormat("{0}", !menu.Childrens.Any(o => o.Visible) ? (Url.Action(menu.ActionResult, menu.Controller.Replace("Controller", ""), new { @area = menu.Area })) : "javascript:void(0);");
+            sb.Append("'><i class='");
+            sb.Append(menu.Icon);
+            sb.Append("'></i>");
+            sb.Append("<span>");
+            sb.Append(menu.Title);
+            sb.Append("</span>");
+            sb.Append("<span class='pull-right-container'><i class='fa fa-angle-left pull-right'></i></span>");
+            sb.Append("</a>");
+            if (menu.Childrens.Any(o => o.Visible && actions.Any(ta => ta.Controller.Equals(o.Controller, StringComparison.CurrentCultureIgnoreCase) && ta.ActionResult.Equals(o.ActionResult, StringComparison.CurrentCultureIgnoreCase) && ta.Area.Equals(o.Area, StringComparison.CurrentCultureIgnoreCase))))
+            {
+                sb.Append("<ul class='treeview-menu'>");
+                foreach (var node in menu.Childrens.Where(o => o.Visible && actions.Any(ta => ta.Controller.Equals(o.Controller, StringComparison.CurrentCultureIgnoreCase) && ta.ActionResult.Equals(o.ActionResult, StringComparison.CurrentCultureIgnoreCase) && ta.Area.Equals(o.Area, StringComparison.CurrentCultureIgnoreCase))))
+                {
+                    RenderMenu(node, actions, sb);
+                }
+                sb.Append("</ul>");
+            }
+        }
+        else if (actions.Any(ta => ta.Controller.Equals(menu.Controller, StringComparison.CurrentCultureIgnoreCase) && ta.ActionResult.Equals(menu.ActionResult, StringComparison.CurrentCultureIgnoreCase) && ta.Area.Equals(menu.Area, StringComparison.CurrentCultureIgnoreCase)))
+        {
+            sb.Append("<li class=''>");
+            sb.Append("<a href='");
+            var url = (Url.Action(menu.ActionResult, menu.Controller.Replace("Controller", ""), new { @area = menu.Area }));
+            sb.Append((Url.Action(menu.ActionResult, menu.Controller.Replace("Controller", ""), new { @area = menu.Area })));
+            sb.Append("'><i class='");
+            sb.Append(menu.Icon);
+            sb.Append("'></i>");
+            sb.Append("<span>");
+            sb.Append(menu.Title);
+            sb.Append("</span>");
+            sb.Append("</a>");
+            sb.Append("</li>");
+        }
+        else if (menu.Controller.Equals("HomeController", StringComparison.OrdinalIgnoreCase) && menu.ActionResult.Equals("Index", StringComparison.OrdinalIgnoreCase) && menu.Area.Equals(string.Empty, StringComparison.OrdinalIgnoreCase))
+        {
+            sb.Append("<li class=''>");
+            sb.Append("<a href='");
+            var url = (Url.Action(menu.ActionResult, menu.Controller.Replace("Controller", ""), new { @area = menu.Area }));
+            sb.Append((Url.Action(menu.ActionResult, menu.Controller.Replace("Controller", ""), new { @area = menu.Area })));
+            sb.Append("'><i class='");
+            sb.Append(menu.Icon);
+            sb.Append("'></i>");
+            sb.Append("<span>");
+            sb.Append(menu.Title);
+            sb.Append("</span>");
+            sb.Append("</a>");
+            sb.Append("</li>");
+        }
+    }
+
+    bool ContainController(Menu menu, string controller, StringComparison comparer)
+    {
+        if (menu == null || string.IsNullOrEmpty(menu.Controller) || string.IsNullOrEmpty(controller))
+            return false;
+
+        if (menu.Controller.Equals(controller, comparer))
+            return true;
+
+        foreach (var node in menu.Childrens)
+        {
+            if (ContainController(node, controller, comparer))
+                return true;
+        }
+
+        return false;
+    }
+
+    bool ContainControllerAndActinResult(Menu menu, string controller, string actionResult, StringComparison comparer)
+    {
+        if (menu == null || string.IsNullOrEmpty(menu.ActionResult) || string.IsNullOrEmpty(actionResult) || string.IsNullOrEmpty(menu.Controller) || string.IsNullOrEmpty(controller))
+            return false;
+
+        if (menu.Controller.Equals(controller, comparer) && menu.ActionResult.Equals(actionResult, comparer))
+            return true;
+
+        foreach (var node in menu.Childrens)
+        {
+            if (ContainControllerAndActinResult(node, controller, actionResult, comparer))
+                return true;
+        }
+
+        return false;
+    }
+
+    bool ContainArea(Menu menu, string area, StringComparison comparer)
+    {
+        if (menu == null)
+            return false;
+
+        if ((menu.Area ?? "").Equals(area ?? "", comparer))
+            return true;
+
+        foreach (var node in menu.Childrens)
+        {
+            if (ContainArea(node, area, comparer))
+                return true;
+        }
+
+        return false;
+    }
+}

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<SelectListItem>
+@using System.Text;
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "minimal";
+    var value = ViewData.ContainsKey("ModelValue") ? ViewData["ModelValue"] : "";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "margin-right:10px;";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+}
+
+@{
+    if (disabled == null)
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <input type="hidden" id="@name" name="@name" value="@value" />
+                <div class="input-group">
+                    @foreach (var select in Model)
+                    {
+                        <label style="@style" for="@name">
+                            <input type="checkbox" bind="checkbox" class="@className" value="@select.Value" @string.Format("{0}", select.Selected ? "checked='checked'" : "")>@select.Value
+                        </label>
+                    }
+                </div>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <input type="hidden" id="@name" name="@name" value="@value" />
+                <div class="input-group">
+                    @foreach (var select in Model)
+                    {
+                        <label style="@style" for="@name">
+                            <input type="checkbox" bind="checkbox" class="@className" value="@select.Value" @string.Format("{0}", select.Selected ? "checked='checked'" : "")>@select.Value
+                        </label>
+                    }
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <input type="hidden" id="@name" name="@name" value="@value" />
+                <div class="input-group">
+                    @foreach (var select in Model)
+                    {
+                        <label style="@style" for="@name">
+                            <input type="checkbox" bind="checkbox" class="@className" value="@select.Value" @string.Format("{0}", select.Selected ? "checked='checked'" : "") disabled>@select.Value
+                        </label>
+                    }
+                </div>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <input type="hidden" id="@name" name="@name" value="@value" />
+                <div class="input-group">
+                    @foreach (var select in Model)
+                    {
+                        <label style="@style" for="@name">
+                            <input type="checkbox" bind="checkbox" class="@className" value="@select.Value" @string.Format("{0}", select.Selected ? "checked='checked'" : "") disabled>@select.Value
+                        </label>
+                    }
+                </div>
+            </div>
+        }
+    }
+
+}

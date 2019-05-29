@@ -1,0 +1,178 @@
+﻿@model AnonymousController.CalcSearchModel
+@{
+    ViewBag.Title = "收益计算";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pageSize = Program.PageSize;
+}
+@section style{
+}
+@section content_header {
+    <section class="content-header">
+        <h1>
+            网贷计算器
+            <small>N期还款：还款本金后，利息还以<b>借款本金</b>计算；M期还款：还款本金后，利息还以<b>剩余本金</b>计算</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/"><i class="fa fa-dashboard"></i> Home</a></li>
+        </ol>
+    </section>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box" data-vivaldi-spatnav-clickable="1">
+            <div class="box-header">
+                <div class="col-xs-12">
+                    <div class="row margin-b-2">
+                        @{
+                            var payselect = new List<SelectListItem>();
+                            foreach (var repay in RemarkAttribute.GetRemarkAttributes<byte>(typeof(RepayType)))
+                            {
+                                payselect.Add(new SelectListItem() { Value = repay.Key.ToString(), Text = repay.Value.Name });
+                            }
+                            var paydata = new ViewDataDictionary(this.ViewData);
+                            paydata["HtmlFieldPrefix"] = "RepayType";
+
+
+                            var timeunitSelect = new List<SelectListItem>();
+                            foreach (var repay in RemarkAttribute.GetRemarkAttributes<byte>(typeof(TimeUnitType)))
+                            {
+                                timeunitSelect.Add(new SelectListItem() { Value = repay.Key.ToString(), Text = repay.Value.Name + "标" });
+                            }
+                            var timeunitdata = new ViewDataDictionary(this.ViewData);
+                            timeunitdata["HtmlFieldPrefix"] = "TimeUnitType";
+                        }
+                        <partial name="~/Views/Shared/EditorTemplates/SearchSelect.cshtml" model="payselect" view-data="paydata" />
+                        <partial name="~/Views/Shared/EditorTemplates/SearchSelect.cshtml" model="timeunitSelect" view-data="timeunitdata" />
+                    </div>
+                    <div class="row margin-b-2">
+                        @Html.EditorFor(m => m.Principal, "SearchEditor", new { placeholder = "请输入本金" })
+                        @Html.EditorFor(m => m.Rate, "SearchEditor", new { placeholder = "请输入利率" })
+                    </div>
+                    <div class="row margin-b-2">
+                        @Html.EditorFor(m => m.Duration, "SearchEditor", new { placeholder = "请输入期限" })
+                        @{
+                            var rateselect = new List<SelectListItem>();
+                            foreach (var repay in RemarkAttribute.GetRemarkAttributes<byte>(typeof(RateType)))
+                            {
+                                rateselect.Add(new SelectListItem() { Value = repay.Key.ToString(), Text = repay.Value.Name });
+                            }
+                            var ratedata = new ViewDataDictionary(this.ViewData);
+                            ratedata["HtmlFieldPrefix"] = "RateType";
+                        }
+                        <partial name="~/Views/Shared/EditorTemplates/SearchSelect.cshtml" model="rateselect" view-data="ratedata" />
+                    </div>
+                    <div class="row margin-b-2">
+                        @Html.EditorFor(m => m.Period, "SearchEditor", new { placeholder = "请输入期数" })
+                        @Html.EditorFor(model => model.StartTime, "SearchDateNullable", new { placeholder = "请输入起息日" })
+                    </div>
+                    <div class="row margin-b-2">
+                        @Html.EditorFor(m => m.AvgPrincipalPeriod, "SearchEditor", new { placeholder = "平均还款期数，N，M期的参数" })
+                        <div class="col-lg-2">
+                            <button type="button" id="btnSearch" class="btn btn-success">直接查询</button>
+                            <button type="button" id="btnFixSearch" class="btn btn-warning">本金修正</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body table-responsive" id="dataTableTemplateView">
+                <table class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px"><input type="checkbox" bind='checkbox_all'></th>
+                            <th>本金</th>
+                            <th>利息</th>
+                            <th>期数</th>
+                            <th>还款日</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="box-footer clearfix" id="dataTableTemplateViewPaging"></div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/x-tmpl" id="template-dataTableView">
+    <tr role="row" class="{className}">
+        <td><input type='checkbox' value='{Id}' bind='checkbox_line'></td>
+        <td>{Principal}</td>
+        <td>{Interest}</td>
+        <td>{Period}</td>
+        <td>{PayDate}</td>
+    </tr>
+</script>
+
+@section script {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var fix = false;
+            var templateView = $("#dataTableTemplateView").bindEngine({
+                ajaxUrl: '@Url.Action("CalcList")',
+                pageSize: '@pageSize',
+                template: $("#template-dataTableView"),
+                pagetemplate: $("#dataTableTemplateViewPaging"),
+                dataBindFormat: {
+                    PayDate: function (e) {
+                        return $.formatDateTime(e.replace("T", " "), "yyyy-MM-dd hh:mm:ss");
+                    },
+                    Principal: function (e) {
+                        return $.formatCurrency(e);
+                    },
+                    Inverest: function (e) {
+                        return $.formatCurrency(e);
+                    },
+                },
+                onDataBinding: function () {
+                    var result = {
+                        repayType: $("#RepayType > option:selected").val(),
+                        timeUnitType: $("#TimeUnitType > option:selected").val(),
+                        rateType: $("#RateType > option:selected").val(),
+                        rate: $("#Rate").val(),
+                        principal: $("#Principal").val(),
+                        duration: $("#Duration").val(),
+                        period: $("#Period").val(),
+                        startTime: $("#StartTime").val(),
+                        avgPrincipalPeriod: $("#AvgPrincipalPeriod").val(),
+                        fixPrincipalPoint: fix,
+                    };
+                    return result;
+                },
+                onBeforeSend: function (xhr) {
+                    window.common.dialog.loading("数据加载中", "@this.Content("~/lib/dialog/skins/icons/loading.gif")", "picloading");
+                },
+                onSuccess: function () {
+                    $("#picloading").remove();
+                },
+                onRowDataBound: function (data) {
+                },
+                onDataBound: function (result) {
+                },
+                onPreDrawing: function (result) {
+                    if (result.status != 1) {
+                        window.common.dialog.operation(result);
+                    }
+                }
+            }).init(300);
+
+            $("#btnSearch").click(function () {
+                fix = false;
+                templateView.refresh();
+            })
+
+            $("#btnFixSearch").click(function () {
+                fix = true;
+                templateView.refresh();
+            })
+        });
+    </script>
+} 

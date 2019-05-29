@@ -1,0 +1,115 @@
+﻿@model PagedSearch
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pageSize = Program.PageSize;
+}
+@section style{
+}
+@section content_header {
+    <section class="content-header">
+        <h1>
+            新加部门
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="DepartmentList" class="active">部门列表</a></li>
+            <li><a href="GroupList">小组列表</a></li>
+            <li><a href="EmployeeList">员工列表</a></li>
+        </ol>
+    </section>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box" data-vivaldi-spatnav-clickable="1">
+            <div class="box-header">
+                <div class="col-xs-12">
+                    <div class="row margin-b-2">
+                        <div class="col-lg-2">
+                            <button type="button" id="btnSearch" class="btn btn-success">查询</button>
+                        </div>
+                        <div class="col-lg-10 text-align-right">
+                            <a href="AddDepartment" class="btn btn-danger">添加部门</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body table-responsive" id="dataTableTemplateView">
+                <table class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px"><input type="checkbox" bind='checkbox_all'></th>
+                            <th>Id</th>
+                            <th>名字</th>
+                            <th>描述</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="box-footer clearfix" id="dataTableTemplateViewPaging"></div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/x-tmpl" id="template-dataTableView">
+    <tr role="row" class="{className}">
+        <td><input type='checkbox' value='{Id}' bind='checkbox_line'></td>
+        <td><a href="EditDepartment/?aggregateId={AggregateId}"><span class="label label-success">{Id}</span></a></td>
+        <td>{Name}</td>
+        <td>{Descn}</td>
+        <td>
+            <a href="EditDepartmentResource/?aggregateId={AggregateId}"><span class="label label-warning">权限</span></a>
+        </td>
+    </tr>
+</script>
+
+@section script {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var fix = false;
+            var templateView = $("#dataTableTemplateView").bindEngine({
+                ajaxUrl: '@Url.Action()',
+                pageSize: '@pageSize',
+                template: $("#template-dataTableView"),
+                pagetemplate: $("#dataTableTemplateViewPaging"),
+                dataBindFormat: {
+                    PayDate: function (e) {
+                        return $.formatDateTime(e.replace("T", " "), "yyyy-MM-dd hh:mm:ss");
+                    },
+                    Principal: function (e) {
+                        return $.formatCurrency(e);
+                    },
+                    Inverest: function (e) {
+                        return $.formatCurrency(e);
+                    },
+                },
+                onDataBinding: function () {
+                    var result = {
+                    };
+                    return result;
+                },
+                onBeforeSend: function (xhr) {
+                    window.common.dialog.loading("数据加载中", "@this.Content("~/lib/dialog/skins/icons/loading.gif")", "picloading");
+                },
+                onSuccess: function () {
+                    $("#picloading").remove();
+                },
+                onRowDataBound: function (data) {
+                },
+                onDataBound: function (result) {
+                },
+                onPreDrawing: function (result) {
+                    if (result.status != 1) {
+                        window.common.dialog.operation(result);
+                    }
+                }
+            });
+
+            $("#btnSearch").click(function () {
+                templateView.refresh();
+            })
+        });
+    </script>
+} 

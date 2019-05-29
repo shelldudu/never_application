@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="mysql.query" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <sql id="qryMobileCodeScout">
+    <ifnotnull parameter="AggregateId" then="and">
+      a.AggregateId = @AggregateId
+    </ifnotnull>
+    <ifnotnull parameter="Mobile" then="and">
+      a.Mobile = @Mobile
+    </ifnotnull>
+    <ifnotnull parameter="ClientIP" then="and">
+      a.ClientIP = @ClientIP
+    </ifnotnull>
+    <ifnotnull parameter="UsageType" then="and">
+      a.UsageType = @UsageType
+    </ifnotnull>
+    <ifnotnull parameter="UsageStatus" then="and">
+      a.UsageStatus= @UsageStatus
+    </ifnotnull>
+    <ifnotnull parameter="BeginTime" then="and">
+      a.CreateDate >= @BeginTime
+    </ifnotnull>
+    <ifnotnull parameter="EndTime" then="and">
+      a.CreateDate &lt; @EndTime
+    </ifnotnull>
+  </sql>
+  
+  <select id="qryMobileCodeInfo">
+    select a.* from mobile_code as a
+    <if then="where" end="" split="">
+      <include refid="qryMobileCodeScout"></include>
+    </if>
+    <ifnotnull parameter="OrderBy" then="">
+      $OrderBy$
+    </ifnotnull>
+    <ifnull parameter="OrderBy" then="">
+      order by a.Id desc
+    </ifnull>
+  </select>
+  
+  <select id="qry_MobileCodeInfo">
+    select a.* from mobile_code as a
+    <if then="where" end="" split="">
+      <include refid="qryMobileCodeScout"></include>
+    </if>
+    <ifnotnull parameter="OrderBy" then="">
+      $OrderBy$
+    </ifnotnull>
+    <ifnull parameter="OrderBy" then="">
+      order by a.Id desc
+    </ifnull>
+    limit @StartIndex,@PageSize
+  </select>
+  
+  <select id="qryMobileCodeInfoCount">
+    select count(a.Id) from mobile_code as a
+    <if then="where" end="" split="">
+      <include refid="qryMobileCodeScout"></include>
+    </if>
+  </select>
+</namespace>

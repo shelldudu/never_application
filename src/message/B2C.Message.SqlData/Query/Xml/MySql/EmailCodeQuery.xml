@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="mysql.query" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <sql id="qryEmailCodeInfoScout">
+    <ifnotnull parameter="AggregateId" then="and">
+      a.AggregateId = @AggregateId
+    </ifnotnull>
+    <ifnotnull parameter="Email" then="and">
+      a.Email = @Email
+    </ifnotnull>
+    <ifnotnull parameter="UsageType" then="and">
+      a.UsageType = @UsageType
+    </ifnotnull>
+    <ifnotnull parameter="UsageStatus" then="and">
+      a.UsageStatus= @UsageStatus
+    </ifnotnull>
+  </sql>
+  
+  <select id="qry_EmailCodeInfo">
+    select a.* from email_code as a
+    <if then="where" end="" split="">
+      <include refid="qryEmailCodeInfoScout"></include>
+    </if>
+    <ifnotnull parameter="OrderBy" then="">
+      $OrderBy$
+    </ifnotnull>
+    <ifnull parameter="OrderBy" then="">
+      order by a.Id desc
+    </ifnull>
+    limit @StartIndex,@PageSize
+  </select>
+
+</namespace>

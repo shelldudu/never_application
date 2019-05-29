@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>管理后台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/lib/ionicons/css/ionicons.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/css/skins/_all-skins.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="~/lib/morris-js/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="~/lib/jvectormap/jquery-jvectormap.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="~/lib/html5shiv/html5shiv.min.js"></script>
+    <script src="~/lib/respond/respond.min.js"></script>
+    <![endif]-->
+    <!-- admin style -->
+    <link rel="stylesheet" href="~/css/AdminZzzZz.css">
+    @RenderSection("style", required: false)
+</head>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+
+    <!-- jQuery 3 -->
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Morris.js charts -->
+    <script src="~/lib/raphael/raphael.min.js"></script>
+    <script src="~/lib/morris-js/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="~/lib/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/lib/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/lib/jquery-knob/jquery.knob.min.js"></script>
+    <!-- laydate -->
+    <script src="~/lib/laydate/laydate.js"></script>
+    <!-- CK Editor -->
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <!-- Slimscroll -->
+    <script src="~/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/lib/fastclick/js/fastclick.js"></script>
+    <!-- Select2 -->
+    <script src="~/lib/select2/js/select2.js"></script>
+    <!-- dialog -->
+    <script src="~/lib/dialog/lhgdialog.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/js/adminlte.js"></script>
+    <!-- AdminLTE Skin -->
+    <script src="~/js/adminlteskin.js"></script>
+    <!-- AdminLTE Startup) -->
+    <script src="~/js/adminstartup.js"></script>
+    @RenderSection("script", required: false)
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿@model EmployeeModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section style{
+
+}
+@section content_header {
+    <section class="content-header">
+        <h1>
+            编辑员工
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="DepartmentList">部门列表</a></li>
+            <li><a href="GroupList">小组列表</a></li>
+            <li><a href="EmployeeList">员工列表</a></li>
+        </ol>
+    </section>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box" data-vivaldi-spatnav-clickable="1">
+            <div class="box-header">
+                <h3 class="box-title">员工基本信息</h3>
+            </div>
+            <div class="box-body">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    <div class="row">
+                        @Html.EditorFor(m => m.Id, "FormEditor", new { displayName = "员工Id", @disabled = true })
+                        @Html.EditorFor(m => m.AggregateId, "FormEditor", new { displayName = "聚合Id", @disabled = true })
+                    </div>
+                    <div class="row">
+                        @Html.EditorFor(m => m.UserName, "FormEditor", new { displayName = "名字", placeholder = "请输入名字" })
+                        @Html.EditorFor(m => m.NickName, "FormEditor", new { displayName = "昵称", placeholder = "请输入昵称" })
+                    </div>
+                    <div class="row">
+                        @Html.EditorFor(m => m.Password, "FormPassword", new { displayName = "密码", placeholder = "请输入密码" })
+                    </div>
+                    <div class="row">
+                        @Html.EditorFor(m => m.DepartmentId, "FormEditor", new { displayName = "所属部门", @disabled = true })
+                        @{
+                            var groupselect = new List<SelectListItem>();
+                            groupselect.Add(new SelectListItem() { Value = ((int)GroupSort.Muggle).ToString(), Text = RemarkAttribute.GetRemarkAttribute(GroupSort.Muggle).Name, Selected = Model.GroupSort == GroupSort.Muggle });
+                            groupselect.Add(new SelectListItem() { Value = ((int)GroupSort.Leader).ToString(), Text = RemarkAttribute.GetRemarkAttribute(GroupSort.Leader).Name, Selected = Model.GroupSort == GroupSort.Leader });
+                            var groupdata = new ViewDataDictionary(this.ViewData);
+                            groupdata["HtmlFieldPrefix"] = "GroupSort";
+                            groupdata["displayName"] = "身份";
+                        }
+                        <partial name="~/Views/Shared/EditorTemplates/FormSelect.cshtml" model="groupselect" view-data="groupdata" />
+                    </div>
+                    <div class="row">
+                        @Html.EditorFor(m => m.CreateDate, "FormDateTime", new { displayName = "创建时间", @disabled = true })
+                        @Html.EditorFor(m => m.Creator, "FormEditor", new { displayName = "创建者", @disabled = true })
+                    </div>
+                    <div class="row">
+                        @Html.EditorFor(m => m.EditDate, "FormDateTime", new { displayName = "编辑时间", @disabled = true })
+                        @Html.EditorFor(m => m.Editor, "FormEditor", new { displayName = "创建者", @disabled = true })
+                    </div>
+                    <div class="box-footer">
+                        @Html.HiddenFor(m => m.Version)
+                        <button type="submit" class="btn bg-maroon margin">提交保存</button>
+                        <button type="button" class="btn bg-purple margin" id="btnpwd">更新密码</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section script {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnpwd").click(function () {
+                var password = $("#Password").val();
+                if (password == null || password == "") {
+                    window.common.dialog.alert("密码为空");
+                    return "";
+                }
+
+                $.ajax({
+                url: '@Url.Action("EditEmployeePassword")',
+                    data: { aggregateId: '@Model.AggregateId', password: password },
+                type: "post",
+                success: function (result) {
+                    window.common.dialog.operation(result);
+                },
+                error: function (result) {
+                    window.common.dialog.operation(result);
+                }});
+            })
+        });
+    </script>
+} 

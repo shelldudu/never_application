@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="mysql" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <insert id="insertResourceRoot">
+    insert into resource
+    (AggregateId,
+    GroupSort,
+    ActionDescn,
+    CreateDate,
+    Creator,
+    EditDate,
+    Editor,
+    Version)
+    values
+    (@AggregateId,
+    @GroupSort,
+    @ActionDescn,
+    @CreateDate,
+    @Creator,
+    @EditDate,
+    @Editor,
+    @Version);
+    <return type="int">
+      select last_insert_id() as Id;
+    </return>
+  </insert>
+
+  <insert id="batchInsertResourceRoot">
+    insert into resource
+    (AggregateId,
+    GroupSort,
+    ActionDescn,
+    CreateDate,
+    Creator,
+    EditDate,
+    Editor,
+    Version)
+    values
+    <ifarray open="" close="" parameter="" split="," then="">
+      (@AggregateId,
+      @GroupSort,
+      @ActionDescn,
+      @CreateDate,
+      @Creator,
+      @EditDate,
+      @Editor,
+      @Version)
+    </ifarray>
+  </insert>
+
+  <select id="qryResourceRoot">
+    select a.* from resource as a
+    <if then="where" split="" end="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="GroupSort" then="and">
+        a.GroupSort = @GroupSort
+      </ifnotnull>
+      <ifarray parameter = "GroupSortArray" open="" close="" split="," then="and">
+        a.GroupSort in (@GroupSortArray)
+      </ifarray>
+    </if>
+  </select>
+
+  <update id="updateResourceRoot">
+    update resource
+    set Version = Version + 1,
+    ActionDescn = @ActionDescn,
+    EditDate = @EditDate,
+    Editor = @Editor
+    where AggregateId = @AggregateId;
+  </update>
+
+  <update id="batchUpdateResourceRoot">
+    <ifarray open="" close="" parameter="" split="" then="">
+      update resource
+      set Version = Version + 1,
+      GroupSort = @GroupSort,
+      ActionDescn = @ActionDescn,
+      EditDate = @EditDate,
+      Editor = @Editor
+      where AggregateId = @AggregateId;
+    </ifarray>
+  </update>
+
+  <delete id="deleteResourceRoot">
+    delete from resource
+    where AggregateId = @AggregateId;
+  </delete>
+
+  <delete id="batchDeleteResourceRoot">
+    <ifarray open="" close="" parameter="" split="" then="">
+      delete resource
+      from resource
+      where AggregateId = @AggregateId;
+    </ifarray>
+  </delete>
+</namespace>

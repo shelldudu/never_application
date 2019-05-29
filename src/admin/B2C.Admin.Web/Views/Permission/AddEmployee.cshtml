@@ -1,0 +1,164 @@
+﻿@model EmployeeModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pageSize = Program.PageSize;
+}
+@section style{
+
+}
+@section content_header {
+    <section class="content-header">
+        <h1>
+            新加员工
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="~/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="DepartmentList">部门列表</a></li>
+            <li><a href="GroupList">小组列表</a></li>
+            <li><a href="EmployeeList">员工列表</a></li>
+        </ol>
+    </section>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box" data-vivaldi-spatnav-clickable="1">
+            <div class="box-header">
+                <h3 class="box-title">员工基本信息</h3>
+            </div>
+            <div class="box-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true" style="">基本信息</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">选择部门</a></li>
+                    </ul>
+                </div>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                @Html.EditorFor(m => m.UserName, "FormEditor", new { displayName = "名字", placeholder = "请输入名字" })
+                                @Html.EditorFor(m => m.NickName, "FormEditor", new { displayName = "昵称", placeholder = "请输入描述" })
+                            </div>
+                            <div class="row">
+                                @Html.EditorFor(m => m.Password, "FormPassword", new { displayName = "密码", placeholder = "请输入密码" })
+                                @Html.EditorFor(m => m.DepartmentId, "FormEditor", new { displayName = "部门", placeholder = "请选择部门" })
+                            </div>
+                            <div class="row">
+                                @{
+                                    var groupselect = new List<SelectListItem>();
+                                    groupselect.Add(new SelectListItem() { Value = ((int)GroupSort.Muggle).ToString(), Text = RemarkAttribute.GetRemarkAttribute(GroupSort.Muggle).Name });
+                                    groupselect.Add(new SelectListItem() { Value = ((int)GroupSort.Leader).ToString(), Text = RemarkAttribute.GetRemarkAttribute(GroupSort.Leader).Name });
+                                    var groupdata = new ViewDataDictionary(this.ViewData);
+                                    groupdata["HtmlFieldPrefix"] = "GroupSort";
+                                    groupdata["displayName"] = "身份";
+                                }
+                                <partial name="~/Views/Shared/EditorTemplates/FormSelect.cshtml" model="groupselect" view-data="groupdata" />
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_2">
+                            <div class="box-header">
+                                <div class="col-xs-12">
+                                    <div class="row margin-b-2">
+                                        <div class="col-lg-2">
+                                            <button type="button" id="btnSearch" class="btn btn-success">查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body table-responsive" id="dataTableTemplateView">
+                                <table class="table table-bordered table-hover dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px"><input type="checkbox" bind='checkbox_all'></th>
+                                            <th>Id</th>
+                                            <th>名字</th>
+                                            <th>描述</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn bg-maroon margin">提交</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-tmpl" id="template-dataTableView">
+    <tr role="row" class="{className}">
+        <td><input type='checkbox' value='{Id}' bind='checkbox_line'></td>
+        <td>{Id}</td>
+        <td>{Name}</td>
+        <td>{Descn}</td>
+        <td>
+            <button type="button" class="btn btn-success btn-xs" value="{AggregateId}">选择</button>
+        </td>
+    </tr>
+</script>
+
+@section script {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var fix = false;
+            var templateView = $("#dataTableTemplateView").bindEngine({
+                ajaxUrl: '@Url.Action("DepartmentList")',
+                pageSize: '@pageSize',
+                template: $("#template-dataTableView"),
+                pagetemplate: $("#dataTableTemplateViewPaging"),
+                dataBindFormat: {
+                    PayDate: function (e) {
+                        return $.formatDateTime(e.replace("T", " "), "yyyy-MM-dd hh:mm:ss");
+                    },
+                    Principal: function (e) {
+                        return $.formatCurrency(e);
+                    },
+                    Inverest: function (e) {
+                        return $.formatCurrency(e);
+                    },
+                },
+                onDataBinding: function () {
+                    var result = {
+                    };
+                    return result;
+                },
+                onBeforeSend: function (xhr) {
+                    window.common.dialog.loading("数据加载中", "@this.Content("~/lib/dialog/skins/icons/loading.gif")", "picloading");
+                },
+                onSuccess: function () {
+                    $("#picloading").remove();
+                },
+                onRowDataBound: function (data) {
+                },
+                onDataBound: function (result) {
+                    var buttons = $("button[value]").each(function () {
+                        $(this).click(function () {
+                            $("button[value]").each(function () {
+                                $(this).attr("class", "btn btn-success btn-xs");
+                                $(this).text("选择");
+                            });
+                            $(this).attr("class", "btn btn-danger btn-xs");
+                            $(this).text("已选择");
+                            $("#DepartmentId").val($(this).attr("value"));
+                        });
+                    });
+                },
+                onPreDrawing: function (result) {
+                    if (result.status != 1) {
+                        window.common.dialog.operation(result);
+                    }
+                }
+            });
+
+            $("#btnSearch").click(function () {
+                templateView.refresh();
+            })
+        });
+    </script>
+} 

@@ -1,0 +1,144 @@
+﻿@model IDictionary<string, IEnumerable<SelectListItem>>
+@using System.Text;
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "form-control select2";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "width: 100%;";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+}
+
+@{
+    if (disabled == null)
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <select id='@name' name='@name' class='@className' style="@style">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <optgroup label="@item.Key">
+                                @{
+                                    foreach (var select in item.Value)
+                                    {
+                                        if (select.Selected)
+                                        {
+                                            <option value='@select.Value' selected="selected">@select.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value='@select.Value'>@select.Text</option>
+                                        }
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <select id='@name' name='@name' class='@className' style="@style">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <optgroup label="@item.Key">
+                                @{
+                                    foreach (var select in item.Value)
+                                    {
+                                        if (select.Selected)
+                                        {
+                                            <option value='@select.Value' selected="selected">@select.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value='@select.Value'>@select.Text</option>
+                                        }
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>
+            </div>
+        }
+    }
+    else
+    {
+        if (this.ModelError() != null && !string.IsNullOrWhiteSpace(name) && this.ModelError().Any(t => t.MemberName.Contains(name)))
+        {
+            <div class="form-group col-lg-6 has-error">
+                <label class="control-label" for="@name">
+                    <i class="fa fa-times-circle-o"></i>@displayName
+                </label>
+                <select id='@name' name='@name' class='@className' style="@style" disabled>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <optgroup label="@item.Key">
+                                @{
+                                    foreach (var select in item.Value)
+                                    {
+                                        if (select.Selected)
+                                        {
+                                            <option value='@select.Value' selected="selected">@select.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value='@select.Value'>@select.Text</option>
+                                        }
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>
+                <span class="help-block">@this.ModelError().FirstOrDefault(t => t.MemberName == name).Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="form-group col-lg-6">
+                <label for="@name">@displayName</label>
+                <select id='@name' name='@name' class='@className' style="@style" disabled>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <optgroup label="@item.Key">
+                                @{
+                                    foreach (var select in item.Value)
+                                    {
+                                        if (select.Selected)
+                                        {
+                                            <option value='@select.Value' selected="selected">@select.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value='@select.Value'>@select.Text</option>
+                                        }
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>
+            </div>
+        }
+    }
+
+}
+

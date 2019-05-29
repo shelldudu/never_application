@@ -1,0 +1,606 @@
+﻿        /// <summary>
+        /// 日紫白九星入中表
+        /// </summary>
+        public readonly static IDictionary<LiuShiJiaZiEnum, IDictionary<DateTimeKey, JiuGongFeiXing>> 日紫白九星入中表 = new Dictionary<LiuShiJiaZiEnum, IDictionary<DateTimeKey, JiuGongFeiXing>>()
+        {
+            { LiuShiJiaZiEnum.甲子,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.六白武曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.乙丑,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.五黄廉贞星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丙寅,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.四绿文曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丁卯,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.三碧禄存星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.戊辰,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.二黑巨门星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.己巳,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.一白贪狼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.庚午,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.九紫右弼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.辛未,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.八白左辅星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.壬申,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.七赤破军星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.癸酉,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.六白武曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.甲戌,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.五黄廉贞星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.乙亥,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.四绿文曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丙子,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.三碧禄存星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丁丑,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.二黑巨门星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.戊寅,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.一白贪狼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.己卯,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.九紫右弼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.庚辰,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.八白左辅星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.辛巳,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.七赤破军星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.壬午,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.六白武曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.癸未,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.五黄廉贞星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.甲申,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.四绿文曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.乙酉,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.三碧禄存星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丙戌,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.二黑巨门星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丁亥,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.一白贪狼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.戊子,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.九紫右弼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.己丑,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.八白左辅星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.庚寅,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.七赤破军星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.辛卯,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.六白武曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.壬辰,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.五黄廉贞星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.癸巳,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.四绿文曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.甲午,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.三碧禄存星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.乙未,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.二黑巨门星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丙申,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.一白贪狼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丁酉,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.九紫右弼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.戊戌,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.八白左辅星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.己亥,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.七赤破军星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.庚子,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.六白武曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.辛丑,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.五黄廉贞星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.壬寅,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.四绿文曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.癸卯,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.三碧禄存星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.甲辰,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.二黑巨门星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.乙巳,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.一白贪狼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丙午,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.九紫右弼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丁未,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.八白左辅星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.戊申,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.七赤破军星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.己酉,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.六白武曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.庚戌,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.五黄廉贞星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.辛亥,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.四绿文曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.壬子,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.三碧禄存星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.癸丑,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.二黑巨门星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.甲寅,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.一白贪狼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.乙卯,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.九紫右弼星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丙辰,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.八白左辅星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.丁巳,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.七赤破军星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.戊午,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.六白武曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.己未,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.五黄廉贞星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.庚申,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.四绿文曲星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.辛酉,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.一白贪狼星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.三碧禄存星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.壬戌,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.二黑巨门星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.五黄廉贞星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.八白左辅星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.二黑巨门星 }, 
+                } 
+            },
+            { LiuShiJiaZiEnum.癸亥,new Dictionary<DateTimeKey,JiuGongFeiXing>() 
+                { 
+                    { new DateTimeKey(JieQiEnum.冬至,JieQiEnum.雨水),JiuGongFeiXing.六白武曲星 }, 
+                    { new DateTimeKey(JieQiEnum.雨水,JieQiEnum.谷雨),JiuGongFeiXing.三碧禄存星 }, 
+                    { new DateTimeKey(JieQiEnum.谷雨,JieQiEnum.夏至),JiuGongFeiXing.九紫右弼星 }, 
+                    { new DateTimeKey(JieQiEnum.夏至,JieQiEnum.处暑),JiuGongFeiXing.四绿文曲星 }, 
+                    { new DateTimeKey(JieQiEnum.处暑,JieQiEnum.霜降),JiuGongFeiXing.七赤破军星 }, 
+                    { new DateTimeKey(JieQiEnum.霜降,JieQiEnum.冬至),JiuGongFeiXing.一白贪狼星 }, 
+                } 
+            },
+        };

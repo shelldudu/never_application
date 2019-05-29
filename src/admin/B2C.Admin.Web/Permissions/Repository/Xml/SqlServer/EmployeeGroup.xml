@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="sqlserver" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <insert id="batchInsertEmployeeGroupRoot">
+    insert into employee_group
+    (AggregateId,
+    EmployeeId,
+    GroupId,
+    CreateDate,
+    Creator,
+    EditDate,
+    Editor,
+    Version)
+    values
+    <ifarray open="" close="" parameter="" split="," then="">
+      (@AggregateId,
+      @EmployeeId,
+      @GroupId,
+      @CreateDate,
+      @Creator,
+      @EditDate,
+      @Editor,
+      @Version)
+    </ifarray>
+  </insert>
+
+  <select id="qryEmployeeGroupRoot">
+    select a.* from employee_group as a
+    <if then="where" end="" split="">
+      <ifnotnull parameter="GroupId" then="and">
+        a.GroupId = @GroupId
+      </ifnotnull>
+      <ifnotnull parameter="EmployeeId" then="and">
+        a.EmployeeId = @EmployeeId
+      </ifnotnull>
+    </if>
+  </select>
+
+  <delete id="deleteEmployeeGroupRoot">
+    delete from employee_group
+    where AggregateId = @AggregateId;
+  </delete>
+
+  <delete id="batchDeleteEmployeeGroupRoot">
+    delete from employee_group
+    <ifarray open="" close="" parameter="AggregateId" split="," then="">
+      where AggregateId in (@AggregateId);
+    </ifarray>
+  </delete>
+
+  <select id="qryEmployeeResourceRoot">
+    select a.* from resource as a inner join group_resource as gr on a.AggregateId = gr.ResourceId inner join employee_group as eg on eg.GroupId = gr.GroupId
+    where eg.EmployeeId = @EmployeeId;
+  </select>
+
+  <select id="qryEmployeeOwnerGroupRoot">
+    select a.*,
+    (select EmployeeId from employee_group as eg where a.AggregateId = eg.GroupId and eg.EmployeeId = @EmployeeId) as OwnerId
+    from [group] as a
+    where a.DepartmentId = @DepartmentId
+  </select>
+</namespace>

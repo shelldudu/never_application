@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SelectListItem>
+@using System.Text;
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "form-control select2";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "width: 100%;";
+    var colxs = ViewData.ContainsKey("colxs") ? ViewData["colxs"] : "col-lg-2";
+    var colxsStyle = ViewData.ContainsKey("colxsstyle") ? ViewData["colxsstyle"] : "";
+    var inputStyle = ViewData.ContainsKey("inputstyle") ? ViewData["inputstyle"] : "width: 100%;";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+}
+
+<div class="@colxs" style="@colxsStyle">
+    <div class="input-group" style="@inputStyle">
+        <select bind="select2" id='@name' name='@name' class='@className' style="@style">
+            @{
+                foreach (var select in Model)
+                {
+                    if (select != null)
+                    {
+                        if (select.Selected)
+                        {
+                            <option value='@select.Value' selected="selected">@select.Text</option>
+                        }
+                        else
+                        {
+                            <option value='@select.Value'>@select.Text</option>
+                        }
+                    }
+                }
+            }
+        </select>
+    </div>
+</div>

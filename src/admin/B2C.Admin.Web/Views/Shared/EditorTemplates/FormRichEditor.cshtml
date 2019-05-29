@@ -1,0 +1,49 @@
+﻿@model dynamic
+
+@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    if (string.IsNullOrEmpty(name))
+    {
+        name = ViewData.ContainsKey("HtmlFieldPrefix") ? ViewData["HtmlFieldPrefix"] as string : "";
+    }
+    var className = ViewData.ContainsKey("class") ? ViewData["class"] : "form-control select2";
+    var style = ViewData.ContainsKey("style") ? ViewData["style"] : "width: 100%;";
+    var disabled = (object)(ViewData.ContainsKey("disabled") ? ViewData["disabled"] : null);
+    var displayName = ViewData.ContainsKey("displayName") ? ViewData["displayName"] as string : ViewData.ModelMetadata.DisplayName;
+    var placeholder = ViewData.ContainsKey("placeholder") ? ViewData["placeholder"] as string : ViewData.ModelMetadata.Description;
+}
+
+@{
+    if (disabled == null)
+    {
+        <div class="form-group col-lg-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        @displayName
+                    </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <textarea bind="rich" id="@name" name="@name" rows="10" cols="80" style="@style">@Model</textarea>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="form-group col-lg-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        @displayName
+                    </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <textarea bind="rich" id="@name" name="@name" rows="10" cols="80" style="@style" disabled>@Model</textarea>
+                </div>
+            </div>
+        </div>
+    }
+}

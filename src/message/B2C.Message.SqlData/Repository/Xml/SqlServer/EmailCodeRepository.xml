@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="sqlserver.repos" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <select id="qryEmailCodeRoot">
+    select a.* from email_code as a
+    <if then="where" end="" split="">
+      <ifnotnull parameter="AggregateId" then="and">
+        a.AggregateId = @AggregateId
+      </ifnotnull>
+      <ifnotnull parameter="Email" then="and">
+        a.Email = @Email
+      </ifnotnull>
+      <ifnotnull parameter="UsageType" then="and">
+        a.UsageType = @UsageType
+      </ifnotnull>
+      <ifnotnull parameter="UsageStatus" then="and">
+        a.UsageStatus= @UsageStatus
+      </ifnotnull>
+    </if>
+    order by a.Id desc
+  </select>
+
+  <insert id="insertEmailCodeRoot">
+    INSERT INTO email_code
+    (AggregateId,
+    Email,
+    UsageType,
+    UsageCode,
+    ExpireTime,
+    UsageStatus,
+    ClientIP,
+    Platform,
+    CreateDate,
+    Creator,
+    EditDate ,
+    Editor ,
+    Version)
+    VALUES
+    (@AggregateId,
+    @Email,
+    @UsageType,
+    @UsageCode,
+    @ExpireTime,
+    @UsageStatus,
+    @ClientIP,
+    @Platform,
+    @CreateDate,
+    @Creator,
+    @EditDate,
+    @Editor,
+    @Version);
+    <return type="int">
+      select @@Identity as value;
+    </return>
+  </insert>
+
+  <update id="updateEmailCodeUsed">
+    update email_code
+    set Version = Version +1,
+    UsageStatus = @UsageStatus,
+    EditDate = @EditDate,
+    Editor = @Editor
+    where AggregateId = @AggregateId
+    and UsageStatus = 0
+    and ExpireTime &lt; Getdate();
+  </update>
+</namespace>

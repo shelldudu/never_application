@@ -1,0 +1,20 @@
+/*共享文件只支持key-value，并且只支持一层key查询,find://eat表示不会保留双引号，find://cat表示保留，link://表示不保留双引号，直接使用引用的value绑定到这里*/
+{
+  "template": "true",
+  "sharename": "share",
+  "message_conn": "server=127.0.0.1;uid=sa;pwd=123456;database=b2c_message;",
+  "prm_conn": "server=127.0.0.1;uid=sa;pwd=123456;database=b2c_admin;",
+  "hosturl": {
+    "wap": "http://127.0.0.1",
+    "www": "http://127.0.0.1",
+    "app": "http://127.0.0.1"
+  },
+  "MessageA10": {
+    "url": [ "http://127.0.0.1:23301/api/", "http://127.0.0.1:23301/api/" ],
+    "ping": [ "http://127.0.0.1:23301/a10", "http://127.0.0.1:23301/a10" ]
+  },
+  "AppA10": {
+    "url": [ "http://127.0.0.1:8081/", "http://127.0.0.1:8081/" ],
+    "ping": [ "http://127.0.0.1:8081/a10", "http://127.0.0.1:8081/a10" ]
+  }
+}

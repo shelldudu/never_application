@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace id="sqlserver" indented="true" xmlns="never.easysql" xsi:schemaLocation="never.easysql ../../../../App_Config/easysql.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <insert id="batchInsertGroupResourceRoot">
+    insert into group_resource
+    (AggregateId,
+    GroupId,
+    ResourceId,
+    CreateDate,
+    Creator,
+    EditDate,
+    Editor,
+    Version)
+    values
+    <ifarray open="" close="" parameter="" split="," then="">
+      (@AggregateId,
+      @GroupId,
+      @ResourceId,
+      @CreateDate,
+      @Creator,
+      @EditDate,
+      @Editor,
+      @Version)
+    </ifarray>
+  </insert>
+
+  <select id="qryGroupResourceRoot">
+    select gr.* from resource as a inner join group_resource as gr on a.AggregateId = gr.ResourceId
+    where gr.GroupId = @GroupId;
+  </select>
+  
+  <select id="qryResourceRootOfGroup">
+    select a.* from resource as a inner join group_resource as gr on a.AggregateId = gr.ResourceId
+    where gr.GroupId = @GroupId;
+  </select>
+  
+  <select id="qryGroupOwnerResourceRoot">
+    select a.*,
+    (select DepartmentId from group_resource as gr where a.AggregateId = gr.ResourceId and gr.GroupId = @GroupId) as OwnerId
+    from resource as a inner join department_resource as dr on a.AggregateId = dr.ResourceId
+    where a.GroupSort = 0
+    and dr.DepartmentId = @DepartmentId
+  </select>
+  
+  <delete id="batchDeleteGroupResourceRoot">
+    delete from group_resource
+    <if then="where" end="" split="">
+      <ifarray open="" close="" parameter="AggregateId" split="," then="">
+        AggregateId in (@AggregateId)
+      </ifarray>
+      <ifarray open="" close="" parameter="ResourceId" split="," then="">
+        ResourceId in (@ResourceId)
+      </ifarray>
+    </if>
+  </delete>
+</namespace>
