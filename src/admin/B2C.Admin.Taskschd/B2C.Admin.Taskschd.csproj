@@ -8,7 +8,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="Never" Version="1.0.0" />
+    <PackageReference Include="Never" Version="1.0.1" />
     <PackageReference Include="Never.Configuration" Version="1.0.0" />
     <PackageReference Include="Never.EasySql" Version="1.0.0" />
     <PackageReference Include="Never.JsonNet" Version="1.0.0" />
@@ -17,8 +17,8 @@
     <PackageReference Include="Never.Deployment" Version="1.0.0" />
     <PackageReference Include="Never.QuartzNET" Version="1.0.0" />
     <PackageReference Include="Never.SqliteRecovery" Version="1.0.0" />
-    <PackageReference Include="Never.Web" Version="1.0.0" />
-    <PackageReference Include="Never.Web.WebApi" Version="1.0.0" />
+    <PackageReference Include="Never.Web" Version="1.0.1" />
+    <PackageReference Include="Never.Web.WebApi" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
