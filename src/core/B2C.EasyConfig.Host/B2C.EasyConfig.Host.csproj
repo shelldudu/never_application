@@ -35,7 +35,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />
     <PackageReference Include="Never.NLog" Version="1.0.0" />
-    <PackageReference Include="Never" Version="1.0.1" />
+    <PackageReference Include="Never" Version="1.0.3" />
     <PackageReference Include="Never.Hosting" Version="1.0.0" />
     <PackageReference Include="Never.Configuration" Version="1.0.0" />
   </ItemGroup>

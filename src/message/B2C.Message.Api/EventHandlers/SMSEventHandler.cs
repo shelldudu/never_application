@@ -12,7 +12,7 @@ namespace B2C.Message.Api.EventHandlers
     {
         public void Execute(IEventContext context, CreateMobileCodeEvent e)
         {
-            if (Never.IoC.ContainerContext.Current == null || e.Mobile <= 0 || e.Mobile.ToString().IsChineseMobile() == false || e.Message.IsNullOrWhiteSpace())
+            if (Never.IoC.ContainerContext.Current == null || e.Mobile <= 0 || e.Message.IsNullOrWhiteSpace())
                 return;
 
             using (var sc = Never.IoC.ContainerContext.Current.ServiceLocator.BeginLifetimeScope())

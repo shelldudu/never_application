@@ -1,11 +1,11 @@
-﻿using Never;
-using Never.DataAnnotations;
-using Never.Deployment;
-using B2C.Infrastructure;
-using B2C.Message.Contract.EnumTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using B2C.Infrastructure;
+using B2C.Message.Contract.EnumTypes;
+using Never;
+using Never.DataAnnotations;
+using Never.Deployment;
 
 namespace B2C.Message.Contract.Request
 {

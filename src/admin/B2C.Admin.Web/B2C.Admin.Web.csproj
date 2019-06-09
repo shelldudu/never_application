@@ -60,14 +60,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="MimeMapping" Version="1.0.1.12" />
     <PackageReference Include="MySql.Data" Version="8.0.16" />
-    <PackageReference Include="Never" Version="1.0.1" />
+    <PackageReference Include="Never" Version="1.0.3" />
     <PackageReference Include="Never.Configuration" Version="1.0.0" />
     <PackageReference Include="Never.EasySql" Version="1.0.0" />
     <PackageReference Include="Never.JsonNet" Version="1.0.0" />
     <PackageReference Include="Never.NLog" Version="1.0.0" />
     <PackageReference Include="Never.ProtoBuf" Version="1.0.0" />
     <PackageReference Include="Never.SqliteRecovery" Version="1.0.0" />
-    <PackageReference Include="Never.Web" Version="1.0.1" />
+    <PackageReference Include="Never.Web" Version="1.0.3" />
     <PackageReference Include="Never.Web.Mvc" Version="1.0.1" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="2.2.0" />

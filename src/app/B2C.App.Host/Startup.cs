@@ -1,4 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -15,21 +22,14 @@ using Never.Configuration.ConfigCenter.Remoting;
 using Never.Deployment;
 using Never.IoC;
 using Never.Logging;
-using Never.Net;
 using Never.NLog;
 using Never.Serialization;
 using Never.Serialization.Json;
 using Never.Utils;
+using Never.Web;
 using Never.Web.Encryptions;
 using Never.Web.WebApi;
 using Never.Web.WebApi.Encryptions;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace B2C.App.Host
 {
@@ -192,7 +192,7 @@ namespace B2C.App.Host
                             //登陆
                             case "Login":
                                 {
-                                    var loginTask = new WebRequestDownloader().PostString(new Uri(url), body, header, "application/json");
+                                    var loginTask = new WebRequestDownloader().PostString(new Uri(url), body, header, "application/json", 0);
                                     var loginContent = loginTask;
                                     var target = EasyJsonSerializer.Deserialize<Never.Web.WebApi.Controllers.BasicController.ResponseResult<UserIdToken>>(loginContent);
                                     if (target != null && target.Code == "0000" && target.Data.UserId > 0)
@@ -208,7 +208,7 @@ namespace B2C.App.Host
                             //退出
                             case "Logout":
                                 {
-                                    new WebRequestDownloader().PostString(new Uri(url), body, header, "application/json");
+                                    new WebRequestDownloader().PostString(new Uri(url), body, header, "application/json", 0);
                                     this.authenticationService.SignOut(context, token);
                                     var appresult = new Never.Web.WebApi.Controllers.BasicController.ResponseResult<AppToken>("0000", new AppToken { @accesstoken = string.Empty }, string.Empty);
                                     return this.ConvertContentToBody(context, EasyJsonSerializer.Serialize(appresult), enctryptor);
@@ -220,7 +220,7 @@ namespace B2C.App.Host
                             url = string.Concat(url, "?userid=", header["userid"]);
                         }
 
-                        var task = new WebRequestDownloader().Post(new Uri(url), body, header, "application/json");
+                        var task = new WebRequestDownloader().Post(new Uri(url), body, header, "application/json", 0);
                         return this.ConvertContentToBody(context, task, enctryptor);
                         //    var logger = Never.IoC.ContainerContext.Current.ServiceLocator.Resolve<ILoggerBuilder>().Build(typeof(Startup));
                         //    var action = new Action<string>((x) =>
@@ -249,7 +249,7 @@ namespace B2C.App.Host
                 }
                 if (context.Request.Headers != null)
                 {
-                    if(context.Request.Headers.ContainsKey("X-Real-IP"))
+                    if (context.Request.Headers.ContainsKey("X-Real-IP"))
                     {
                         var ip = context.Request.Headers["X-Real-IP"].FirstOrDefault();
                         if (ip.IsIP())

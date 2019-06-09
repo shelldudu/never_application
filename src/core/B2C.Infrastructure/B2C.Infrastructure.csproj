@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Never" Version="1.0.1" />
+    <PackageReference Include="Never" Version="1.0.3" />
   </ItemGroup>
 
 </Project>
