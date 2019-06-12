@@ -48,7 +48,7 @@ namespace B2C.App.Api.Models
                     yield return new KeyValuePair<Expression<Func<RegisterViewModel, object>>, string>(model => model.Password, "密码为空");
 
                 if (target.UserName.IsNullOrWhiteSpace())
-                    yield return new KeyValuePair<Expression<Func<RegisterViewModel, object>>, string>(model => model.Password, "手机号码为空");
+                    yield return new KeyValuePair<Expression<Func<RegisterViewModel, object>>, string>(model => model.UserName, "手机号码为空");
 
                 if (target.VCode.IsNullOrWhiteSpace())
                     yield return new KeyValuePair<Expression<Func<RegisterViewModel, object>>, string>(model => model.VCode, "短信验证码为空");

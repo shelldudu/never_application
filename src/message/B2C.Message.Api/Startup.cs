@@ -47,6 +47,7 @@ namespace B2C.Message.Api
             this.Environment = environment;
             this.OnStarting += this.Startup_OnStarting;
         }
+
         public IConfiguration Configuration { get; }
         public IHostingEnvironment Environment { get; }
 
@@ -204,6 +205,7 @@ namespace B2C.Message.Api
         /// <returns></returns>
         protected static bool GetAssemblyName(string file)
         {
+            //该dll使用Assembly.Load会出错，我们直接不用分析里面的内容
             if (file.IndexOf("B2C.Message.Api.Views.dll", StringComparison.OrdinalIgnoreCase) > 0)
                 return false;
 
