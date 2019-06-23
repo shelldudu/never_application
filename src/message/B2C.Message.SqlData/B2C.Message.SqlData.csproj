@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Never" Version="1.0.3" />
-    <PackageReference Include="Never.EasySql" Version="1.0.0" />
+    <PackageReference Include="Never" Version="1.0.4" />
+    <PackageReference Include="Never.EasySql" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>

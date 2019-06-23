@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Never" Version="1.0.3" />
+    <PackageReference Include="Never" Version="1.0.4" />
     <PackageReference Include="Never.Configuration" Version="1.0.0" />
-    <PackageReference Include="Never.Web" Version="1.0.3" />
-    <PackageReference Include="Never.Deployment" Version="1.0.2" />
+    <PackageReference Include="Never.Web" Version="1.0.4" />
+    <PackageReference Include="Never.Deployment" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>

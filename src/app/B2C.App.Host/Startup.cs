@@ -192,7 +192,7 @@ namespace B2C.App.Host
                             //登陆
                             case "Login":
                                 {
-                                    var loginTask = new WebRequestDownloader().PostString(new Uri(url), body, header, "application/json", 0);
+                                    var loginTask = new HttpRequestDownloader().PostString(new Uri(url), body, header, "application/json", 0);
                                     var loginContent = loginTask;
                                     var target = EasyJsonSerializer.Deserialize<Never.Web.WebApi.Controllers.BasicController.ResponseResult<UserIdToken>>(loginContent);
                                     if (target != null && target.Code == "0000" && target.Data.UserId > 0)
@@ -208,7 +208,7 @@ namespace B2C.App.Host
                             //退出
                             case "Logout":
                                 {
-                                    new WebRequestDownloader().PostString(new Uri(url), body, header, "application/json", 0);
+                                    new HttpRequestDownloader().PostString(new Uri(url), body, header, "application/json", 0);
                                     this.authenticationService.SignOut(context, token);
                                     var appresult = new Never.Web.WebApi.Controllers.BasicController.ResponseResult<AppToken>("0000", new AppToken { @accesstoken = string.Empty }, string.Empty);
                                     return this.ConvertContentToBody(context, EasyJsonSerializer.Serialize(appresult), enctryptor);
@@ -220,7 +220,7 @@ namespace B2C.App.Host
                             url = string.Concat(url, "?userid=", header["userid"]);
                         }
 
-                        var task = new WebRequestDownloader().Post(new Uri(url), body, header, "application/json", 0);
+                        var task = new HttpRequestDownloader().Post(new Uri(url), body, header, "application/json", 0);
                         return this.ConvertContentToBody(context, task, enctryptor);
                         //    var logger = Never.IoC.ContainerContext.Current.ServiceLocator.Resolve<ILoggerBuilder>().Build(typeof(Startup));
                         //    var action = new Action<string>((x) =>
@@ -230,7 +230,7 @@ namespace B2C.App.Host
 
                         //    using (var method = new Never.Utils.MethodTickCount(action))
                         //    {
-                        //        var task = new WebRequestDownloader().PostString(new Uri(url), body, header, "application/json");
+                        //        var task = new HttpRequestDownloader().PostString(new Uri(url), body, header, "application/json");
                         //        var content = task;// task.GetAwaiter().GetResult();
                         //        return context.Response.WriteAsync(this.ConvertResult(content, token));
                         //    }
