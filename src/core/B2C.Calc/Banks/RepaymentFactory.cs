@@ -80,7 +80,7 @@ namespace B2C.Calc.Banks
                 if (reType == RepaymentType.按期付息N期还本)
                     throw new ArgumentException("该方法不能创建按期付息N期还本之本金固定");
 
-                if (reType == RepaymentType.按期付息M期还本)
+                if (reType == RepaymentType.按期付息L期还本)
                     throw new ArgumentException("该方法不能创建按期付息N期还本之本金缩小");
 
                 switch (reType)
@@ -155,6 +155,16 @@ namespace B2C.Calc.Banks
         {
             get
             {
+                switch (reType)
+                {
+                    case RepaymentType.按期付息L期还本:
+                        return new 按期付息L期还本(dtype, startDate, principalPeriods);
+
+                    case RepaymentType.按期付息N期还本:
+                        return new 按期付息N期还本(dtype, startDate, principalPeriods);
+                }
+
+
                 return this[dtype, reType, startDate];
             }
         }
@@ -174,6 +184,12 @@ namespace B2C.Calc.Banks
         {
             get
             {
+                switch (reType)
+                {
+                    case RepaymentType.本金按百分比还:
+                        return new 本金按百分比还(dtype, startDate, principalPeriods);
+                }
+
                 return this[dtype, reType, startDate];
             }
         }
