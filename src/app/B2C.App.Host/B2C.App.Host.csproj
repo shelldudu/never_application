@@ -7,13 +7,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />
-    <PackageReference Include="Never" Version="1.0.4" />
-    <PackageReference Include="Never.Configuration" Version="1.0.0" />
-    <PackageReference Include="Never.Deployment" Version="1.0.3" />
-    <PackageReference Include="Never.Memcached" Version="1.0.1" />
+    <PackageReference Include="Never" Version="1.0.5.3" />
+    <PackageReference Include="Never.Configuration" Version="1.0.2.1" />
+    <PackageReference Include="Never.Deployment" Version="1.0.3.1" />
+    <PackageReference Include="Never.Memcached" Version="1.0.2.3" />
     <PackageReference Include="Never.NLog" Version="1.0.1" />
-    <PackageReference Include="Never.Web" Version="1.0.4" />
-    <PackageReference Include="Never.Web.WebApi" Version="1.0.2" />
+    <PackageReference Include="Never.Web" Version="1.0.4.1" />
+    <PackageReference Include="Never.Web.WebApi" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>

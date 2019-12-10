@@ -16,7 +16,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Never" Version="1.0.4" />
+    <PackageReference Include="Never" Version="1.0.5.3" />
   </ItemGroup>
 
 </Project>

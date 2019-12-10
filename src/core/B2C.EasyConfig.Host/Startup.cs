@@ -46,8 +46,8 @@ namespace B2C.EasyConfig.Host
             var listenPoint = new IPEndPoint(IPAddress.Parse(configReader["socket_host"]), configReader.IntInAppConfig("socket_port"));
             var shareFileEventHandler = new EventHandler<ShareFileEventArgs>((ss, ee) => { });
             e.Startup.UseJsonConfigServer(null, shareFileEventHandler, null, this, listenPoint, out var configFileServer, out var configurationWatcher);
-            configurationWatcher.AddShareFile(System.IO.Path.Combine(AppContext.BaseDirectory, "App_Data", "share"), "*.json", SearchOption.TopDirectoryOnly, Encoding.UTF8, null);
-            configurationWatcher.AddAppFile(System.IO.Path.Combine(AppContext.BaseDirectory, "App_Data", "app"), "*.json", SearchOption.TopDirectoryOnly, Encoding.UTF8);
+            configurationWatcher.AddShareFile(System.IO.Path.Combine(AppContext.BaseDirectory, "App_Data", "share"), "*.json", Encoding.UTF8, null);
+            configurationWatcher.AddAppFile(System.IO.Path.Combine(AppContext.BaseDirectory, "App_Data", "app"), "*.json", Encoding.UTF8);
             configurationWatcher.LoggerBuilder = () => e.Startup.ServiceLocator.Resolve<ILoggerBuilder>();
 
             //配置文件
